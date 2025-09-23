@@ -1,0 +1,7 @@
+.{
+    .name = .ta_lib,
+    .version = "0.0.1",
+    .minimum_zig_version = "0.15.1",
+    .paths = .{""},
+    .fingerprint = 0x40034da37ce4afda,
+}
