@@ -15,8 +15,6 @@ pub fn build(b: *std.Build) void {
         .root_module = mod,
         .linkage = .static,
     });
-    lib.addIncludePath(.{ .cwd_relative = "/opt/homebrew/opt/ta-lib/include" });
-    lib.addLibraryPath(.{ .cwd_relative = "/opt/homebrew/opt/ta-lib/lib" });
     lib.linkSystemLibrary("ta-lib");
     lib.linkLibC();
 
@@ -25,8 +23,6 @@ pub fn build(b: *std.Build) void {
     const tests = b.addTest(.{
         .root_module = mod,
     });
-    tests.addIncludePath(.{ .cwd_relative = "/opt/homebrew/opt/ta-lib/include" });
-    tests.addLibraryPath(.{ .cwd_relative = "/opt/homebrew/opt/ta-lib/lib" });
     tests.linkSystemLibrary("ta-lib");
     tests.linkLibC();
 
