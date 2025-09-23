@@ -328,7 +328,7 @@ pub fn ADXR(allocator: std.mem.Allocator, high: []const f64, low: []const f64, c
     return outreal;
 }
 
-pub fn APO(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, slowperiod: i32, matype: c_uint) ![]f64 {
+pub fn APO(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, slowperiod: i32, matype: MAType) ![]f64 {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
     const length = real.len;
@@ -439,7 +439,7 @@ pub fn AVGDEV(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32) 
     return outreal;
 }
 
-pub fn BBANDS(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, nbdevup: f64, nbdevdn: f64, matype: c_uint) !struct {
+pub fn BBANDS(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, nbdevup: f64, nbdevdn: f64, matype: MAType) !struct {
     outrealupperband: []f64,
     outrealmiddleband: []f64,
     outreallowerband: []f64,
@@ -1633,7 +1633,7 @@ pub fn LOG10(allocator: std.mem.Allocator, real: []const f64) ![]f64 {
     return outreal;
 }
 
-pub fn MA(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, matype: c_uint) ![]f64 {
+pub fn MA(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, matype: MAType) ![]f64 {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
     const length = real.len;
@@ -1669,7 +1669,7 @@ pub fn MACD(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, sl
     };
 }
 
-pub fn MACDEXT(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, fastmatype: c_uint, slowperiod: i32, slowmatype: c_uint, signalperiod: i32, signalmatype: c_uint) !struct {
+pub fn MACDEXT(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, fastmatype: MAType, slowperiod: i32, slowmatype: MAType, signalperiod: i32, signalmatype: MAType) !struct {
     outmacd: []f64,
     outmacdsignal: []f64,
     outmacdhist: []f64,
@@ -1735,7 +1735,7 @@ pub fn MAMA(allocator: std.mem.Allocator, real: []const f64, fastlimit: f64, slo
     };
 }
 
-pub fn MAVP(allocator: std.mem.Allocator, real: []const f64, periods: []const f64, minperiod: i32, maxperiod: i32, matype: c_uint) ![]f64 {
+pub fn MAVP(allocator: std.mem.Allocator, real: []const f64, periods: []const f64, minperiod: i32, maxperiod: i32, matype: MAType) ![]f64 {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
     const length = checkLength2(real, periods);
@@ -2008,7 +2008,7 @@ pub fn PLUS_DM(allocator: std.mem.Allocator, high: []const f64, low: []const f64
     return outreal;
 }
 
-pub fn PPO(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, slowperiod: i32, matype: c_uint) ![]f64 {
+pub fn PPO(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, slowperiod: i32, matype: MAType) ![]f64 {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
     const length = real.len;
@@ -2177,7 +2177,7 @@ pub fn STDDEV(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, 
     return outreal;
 }
 
-pub fn STOCH(allocator: std.mem.Allocator, high: []const f64, low: []const f64, close: []const f64, fastk_period: i32, slowk_period: i32, slowk_matype: c_uint, slowd_period: i32, slowd_matype: c_uint) !struct {
+pub fn STOCH(allocator: std.mem.Allocator, high: []const f64, low: []const f64, close: []const f64, fastk_period: i32, slowk_period: i32, slowk_matype: MAType, slowd_period: i32, slowd_matype: MAType) !struct {
     outslowk: []f64,
     outslowd: []f64,
 } {
@@ -2197,7 +2197,7 @@ pub fn STOCH(allocator: std.mem.Allocator, high: []const f64, low: []const f64, 
     };
 }
 
-pub fn STOCHF(allocator: std.mem.Allocator, high: []const f64, low: []const f64, close: []const f64, fastk_period: i32, fastd_period: i32, fastd_matype: c_uint) !struct {
+pub fn STOCHF(allocator: std.mem.Allocator, high: []const f64, low: []const f64, close: []const f64, fastk_period: i32, fastd_period: i32, fastd_matype: MAType) !struct {
     outfastk: []f64,
     outfastd: []f64,
 } {
@@ -2217,7 +2217,7 @@ pub fn STOCHF(allocator: std.mem.Allocator, high: []const f64, low: []const f64,
     };
 }
 
-pub fn STOCHRSI(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, fastk_period: i32, fastd_period: i32, fastd_matype: c_uint) !struct {
+pub fn STOCHRSI(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, fastk_period: i32, fastd_period: i32, fastd_matype: MAType) !struct {
     outfastk: []f64,
     outfastd: []f64,
 } {
