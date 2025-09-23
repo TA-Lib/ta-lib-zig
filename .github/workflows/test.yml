@@ -14,5 +14,12 @@ jobs:
       - uses: mlugg/setup-zig@v2
         with:
           version: 0.15.1
+      - run: |
+          wget https://github.com/ta-lib/ta-lib/releases/download/v0.6.4/ta-lib-0.6.4-src.tar.gz
+          tar xvfz ta-lib-0.6.4-src.tar.gz
+          cd ta-lib-0.6.4
+          ./configure
+          make
+          sudo make install
       - run: zig build test -freference-trace
       - run: zig build -freference-trace
