@@ -85,7 +85,7 @@ pub const TAError = error{
 };
 
 // Convert TA-Lib return code to Zig error
-pub fn convertRetCode(ret_code: c.TA_RetCode) TAError!void {
+fn convertRetCode(ret_code: c.TA_RetCode) TAError!void {
     switch (ret_code) {
         c.TA_SUCCESS => return,
         c.TA_LIB_NOT_INITIALIZE => return TAError.LibNotInitialized,
