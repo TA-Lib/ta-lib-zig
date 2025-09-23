@@ -20,6 +20,14 @@ pub fn build(b: *std.Build) void {
 
     b.installArtifact(lib);
 
+    const docs_step = b.step("docs", "Build docs");
+    const install_docs = b.addInstallDirectory(.{
+        .source_dir = lib.getEmittedDocs(),
+        .install_dir = .prefix,
+        .install_subdir = "docs",
+    });
+    docs_step.dependOn(&install_docs.step);
+
     const tests = b.addTest(.{
         .root_module = mod,
     });
