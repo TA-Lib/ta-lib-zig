@@ -242,9 +242,9 @@ fn makeIntArray(allocator: std.mem.Allocator, len: usize, lookback: usize) ![]i3
 }
 
 pub fn ACCBANDS(allocator: std.mem.Allocator, high: []const f64, low: []const f64, close: []const f64, timeperiod: i32) !struct {
-    outrealupperband: []f64,
-    outrealmiddleband: []f64,
-    outreallowerband: []f64,
+    realupperband: []f64,
+    realmiddleband: []f64,
+    reallowerband: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -356,8 +356,8 @@ pub fn APO(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, slo
 }
 
 pub fn AROON(allocator: std.mem.Allocator, high: []const f64, low: []const f64, timeperiod: i32) !struct {
-    outaroondown: []f64,
-    outaroonup: []f64,
+    aroondown: []f64,
+    aroonup: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -454,9 +454,9 @@ pub fn AVGDEV(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32) 
 }
 
 pub fn BBANDS(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, nbdevup: f64, nbdevdn: f64, matype: MAType) !struct {
-    outrealupperband: []f64,
-    outrealmiddleband: []f64,
-    outreallowerband: []f64,
+    realupperband: []f64,
+    realmiddleband: []f64,
+    reallowerband: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -1478,8 +1478,8 @@ pub fn HT_DCPHASE(allocator: std.mem.Allocator, real: []const f64) ![]f64 {
 }
 
 pub fn HT_PHASOR(allocator: std.mem.Allocator, real: []const f64) !struct {
-    outinphase: []f64,
-    outquadrature: []f64,
+    inphase: []f64,
+    quadrature: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -1498,8 +1498,8 @@ pub fn HT_PHASOR(allocator: std.mem.Allocator, real: []const f64) !struct {
 }
 
 pub fn HT_SINE(allocator: std.mem.Allocator, real: []const f64) !struct {
-    outsine: []f64,
-    outleadsine: []f64,
+    sine: []f64,
+    leadsine: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -1661,9 +1661,9 @@ pub fn MA(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, maty
 }
 
 pub fn MACD(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, slowperiod: i32, signalperiod: i32) !struct {
-    outmacd: []f64,
-    outmacdsignal: []f64,
-    outmacdhist: []f64,
+    macd: []f64,
+    macdsignal: []f64,
+    macdhist: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -1684,9 +1684,9 @@ pub fn MACD(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, sl
 }
 
 pub fn MACDEXT(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32, fastmatype: MAType, slowperiod: i32, slowmatype: MAType, signalperiod: i32, signalmatype: MAType) !struct {
-    outmacd: []f64,
-    outmacdsignal: []f64,
-    outmacdhist: []f64,
+    macd: []f64,
+    macdsignal: []f64,
+    macdhist: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -1707,9 +1707,9 @@ pub fn MACDEXT(allocator: std.mem.Allocator, real: []const f64, fastperiod: i32,
 }
 
 pub fn MACDFIX(allocator: std.mem.Allocator, real: []const f64, signalperiod: i32) !struct {
-    outmacd: []f64,
-    outmacdsignal: []f64,
-    outmacdhist: []f64,
+    macd: []f64,
+    macdsignal: []f64,
+    macdhist: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -1730,8 +1730,8 @@ pub fn MACDFIX(allocator: std.mem.Allocator, real: []const f64, signalperiod: i3
 }
 
 pub fn MAMA(allocator: std.mem.Allocator, real: []const f64, fastlimit: f64, slowlimit: f64) !struct {
-    outmama: []f64,
-    outfama: []f64,
+    mama: []f64,
+    fama: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -1873,8 +1873,8 @@ pub fn MININDEX(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32
 }
 
 pub fn MINMAX(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32) !struct {
-    outmin: []f64,
-    outmax: []f64,
+    min: []f64,
+    max: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -1893,8 +1893,8 @@ pub fn MINMAX(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32) 
 }
 
 pub fn MINMAXINDEX(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32) !struct {
-    outminidx: []i32,
-    outmaxidx: []i32,
+    minidx: []i32,
+    maxidx: []i32,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -2192,8 +2192,8 @@ pub fn STDDEV(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, 
 }
 
 pub fn STOCH(allocator: std.mem.Allocator, high: []const f64, low: []const f64, close: []const f64, fastk_period: i32, slowk_period: i32, slowk_matype: MAType, slowd_period: i32, slowd_matype: MAType) !struct {
-    outslowk: []f64,
-    outslowd: []f64,
+    slowk: []f64,
+    slowd: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -2212,8 +2212,8 @@ pub fn STOCH(allocator: std.mem.Allocator, high: []const f64, low: []const f64, 
 }
 
 pub fn STOCHF(allocator: std.mem.Allocator, high: []const f64, low: []const f64, close: []const f64, fastk_period: i32, fastd_period: i32, fastd_matype: MAType) !struct {
-    outfastk: []f64,
-    outfastd: []f64,
+    fastk: []f64,
+    fastd: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
@@ -2232,8 +2232,8 @@ pub fn STOCHF(allocator: std.mem.Allocator, high: []const f64, low: []const f64,
 }
 
 pub fn STOCHRSI(allocator: std.mem.Allocator, real: []const f64, timeperiod: i32, fastk_period: i32, fastd_period: i32, fastd_matype: MAType) !struct {
-    outfastk: []f64,
-    outfastd: []f64,
+    fastk: []f64,
+    fastd: []f64,
 } {
     var outbegidx: i32 = undefined;
     var outnbelement: i32 = undefined;
