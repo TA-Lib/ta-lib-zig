@@ -120,6 +120,10 @@ pub fn shutdown() !void {
     try convertRetCode(retCode);
 }
 
+pub fn version() [*c]const u8 {
+    return c.TA_GetVersionString();
+}
+
 fn checkLength2(a1: []const f64, a2: []const f64) !usize {
     const len = a1.len;
     if (len != a2.len) {
