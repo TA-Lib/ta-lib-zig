@@ -110,6 +110,16 @@ fn convertRetCode(ret_code: c.TA_RetCode) TAError!void {
     }
 }
 
+pub fn initialize() !void {
+    const retCode = c.TA_Initialize();
+    try convertRetCode(retCode);
+}
+
+pub fn shutdown() !void {
+    const retCode = c.TA_Shutdown();
+    try convertRetCode(retCode);
+}
+
 fn checkLength2(a1: []const f64, a2: []const f64) !usize {
     const len = a1.len;
     if (len != a2.len) {
