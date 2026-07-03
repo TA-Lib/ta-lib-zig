@@ -4,19 +4,19 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const mod = b.createModule(.{
+    const mod = b.addModule("ta_lib", .{
         .root_source_file = b.path("src/root.zig"),
         .target = target,
         .optimize = optimize,
+        .link_libc = true,
     });
+    mod.linkSystemLibrary("ta-lib", .{});
 
     const lib = b.addLibrary(.{
         .name = "ta-lib",
         .root_module = mod,
         .linkage = .static,
     });
-    lib.linkSystemLibrary("ta-lib");
-    lib.linkLibC();
 
     b.installArtifact(lib);
 
@@ -31,8 +31,6 @@ pub fn build(b: *std.Build) void {
     const tests = b.addTest(.{
         .root_module = mod,
     });
-    tests.linkSystemLibrary("ta-lib");
-    tests.linkLibC();
 
     const run_tests = b.addRunArtifact(tests);
 

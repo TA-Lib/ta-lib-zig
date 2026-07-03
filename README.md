@@ -10,7 +10,7 @@ This is a Zig wrapper for [TA-LIB](http://ta-lib.org).
 zig fetch --save "git+https://github.com/ta-lib/ta-lib-zig#main"
 ```
 
-2) In your `build.zig`, add the `httpz` module as a dependency you your program:
+2) In your `build.zig`, add the `ta-lib` module as a dependency you your program:
 
 ```zig
 const ta_lib = b.dependency("ta_lib", .{
