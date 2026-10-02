@@ -1,12 +1,7 @@
 const std = @import("std");
 
 // Import TA-Lib C library
-const c = @cImport({
-    @cInclude("ta-lib/ta_abstract.h");
-    @cInclude("ta-lib/ta_func.h");
-    @cInclude("ta-lib/ta_common.h");
-    @cInclude("ta-lib/ta_defs.h");
-});
+const c = @import("c");
 
 // Moving Average Types (from ta_defs.h)
 pub const MAType = enum(c_uint) {
@@ -45,12 +40,12 @@ pub const CandleSettingType = enum(c_uint) {
 
 // Candle settings functions
 pub fn setCandleSettings(setting_type: CandleSettingType, range_type: RangeType, avg_period: i32, factor: f64) TAError!void {
-    const ret_code = c.TA_SetCandleSettings(@intFromEnum(setting_type), @intFromEnum(range_type), avg_period, factor);
+    const ret_code = c.TA_SetCandleSettings(@backingInt(setting_type), @backingInt(range_type), avg_period, factor);
     try convertRetCode(ret_code);
 }
 
 pub fn restoreCandleDefaultSettings(setting_type: CandleSettingType) TAError!void {
-    const ret_code = c.TA_RestoreCandleDefaultSettings(@intFromEnum(setting_type));
+    const ret_code = c.TA_RestoreCandleDefaultSettings(@backingInt(setting_type));
     try convertRetCode(ret_code);
 }
 

@@ -1,8 +1,16 @@
 const std = @import("std");
+const Translator = @import("translate_c").Translator;
 
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
+
+    const translator: Translator = .init(b.dependency("translate_c", .{}), .{
+        .c_source_file = b.path("src/ta_lib.h"),
+        .target = target,
+        .optimize = optimize,
+        .link_system_libs = &.{.{ .name = "ta-lib" }},
+    });
 
     const mod = b.addModule("ta_lib", .{
         .root_source_file = b.path("src/root.zig"),
@@ -10,7 +18,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
         .link_libc = true,
     });
-    mod.linkSystemLibrary("ta-lib", .{});
+    mod.addImport("c", translator.mod);
 
     const lib = b.addLibrary(.{
         .name = "ta-lib",
