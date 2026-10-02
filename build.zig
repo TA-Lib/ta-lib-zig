@@ -6,7 +6,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     const translator: Translator = .init(b.dependency("translate_c", .{}), .{
-        .c_source_file = b.path("src/ta_lib.h"),
+        .c_source_file = b.path("src/c.h"),
         .target = target,
         .optimize = optimize,
         .link_system_libs = &.{.{ .name = "ta-lib" }},
