@@ -38,10 +38,28 @@ const result = try ta.MOM(allocator, &prices, 5);
 defer allocator.free(result);
 ```
 
-## Regenerating the function wrappers
+## Streaming
 
-The indicator functions in `src/root.zig` are generated from TA-Lib's
-`ta_func.h`. After upgrading TA-Lib, regenerate them with:
+Each indicator also has a streaming type in `ta.stream`, which warms up on some
+history and then evaluates one bar at a time, giving the same values as the
+batch function over the same series:
+
+```zig
+var rsi = try ta.stream.RSI.init(&history, 14);
+defer rsi.deinit();
+
+const latest = try rsi.update(new_close); // commit a closed bar
+const preview = try rsi.peek(live_price); // what-if, commits nothing
+```
+
+`initAndFill` also returns the batch output over the history. Indicators with
+several outputs return an `Output` struct from `update`, `peek` and `value`.
+
+## Regenerating the wrappers
+
+`src/func.zig` (batch functions), `src/stream.zig` (streaming types) and the
+function aliases in `src/root.zig` are generated from TA-Lib's `ta_func.h`;
+the rest of `src/` is hand-written. After upgrading TA-Lib, regenerate them with:
 
 ```bash
 python3 tools/generate_func.py /path/to/include/ta-lib/ta_func.h
